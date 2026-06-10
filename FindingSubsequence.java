@@ -26,12 +26,13 @@ public class FindingSubsequence {
                 i--;
                 j--;
             }
-            else if(lcs[i-1][j]>lcs[i][j-1]){
+            else if(lcs[i-1][j]==lcs[i][j-1] || lcs[i-1][j]>lcs[i][j-1]){
                 i--;
             }
             else{
                 j--;
             }
+            System.out.println(i+" "+j);
         }
         System.out.println(ans.reverse().toString());    
     }
