@@ -17,5 +17,22 @@ public class FindingSubsequence {
         }
         sc.close();
         System.out.println(lcs[s1.length()][s2.length()]);
-     }
+        System.out.print("And the subsequence is : ");
+        int i=s1.length(),j=s2.length();
+        StringBuilder ans=new StringBuilder();
+        while(i>0 && j>0){
+            if(s1.charAt(i-1)==s2.charAt(j-1)){
+                ans.append(s1.charAt(i-1));
+                i--;
+                j--;
+            }
+            else if(lcs[i-1][j]>lcs[i][j-1]){
+                i--;
+            }
+            else{
+                j--;
+            }
+        }
+        System.out.println(ans.reverse().toString());    
+    }
 }
