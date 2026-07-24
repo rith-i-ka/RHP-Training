@@ -1,17 +1,18 @@
+import java.io.BufferedReader;
 import java.util.*;
 public class StaticRangeQueries {
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int q= sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int q = Integer.parseInt(br.readLine());
         int[] arr = new int[n+1];
         for (int i = 1; i <= n; i++) {
-            arr[i] = arr[i-1]+sc.nextInt();
+            arr[i] = arr[i-1]+Integer.parseInt(br.readLine());
         }
         while(q-- > 0){
-            int l = sc.nextInt();
-            int r = sc.nextInt();
+            int l = Integer.parseInt(br.readLine());
+            int r = Integer.parseInt(br.readLine());
             list.add(arr[r]-arr[l-1]);
         }
 
