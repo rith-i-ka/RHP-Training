@@ -1,17 +1,27 @@
 import java.util.*;
 
 public class ManyRepunitSum {
+  public static int lb(int[] nums,int target){
+    int l=0,r=nums.length;
+    while(l<r){
+      int m=(l+r)/2;
+      if(nums[m]>=target) r=m;
+      else l=m+1;
+    }
+    return r;
+  }
   public static void main(String[] args){
     Scanner sc=new Scanner(System.in);
-    List<Integer> result=new ArrayList<>();
     int n=sc.nextInt();
-    int[] arr=new int[n];
-    for(int i=0;i<n;i++) arr[i]=sc.nextInt();
+    int[] nums=new int[n];
+    for(int i=0;i<n;i++) nums[i]=sc.nextInt();
+    Arrays.sort(nums);
+    List<Integer> result=new ArrayList<>();
     int cfwd=0;
-    for(int ctr=1;ctr<=arr[n-1];ctr++){
-      int key=Arrays.binarySearch(arr,ctr);
-      int lb=key>=0?key:-(key)-1;
-      int cnt=arr[n-1]-lb;
+    int cnt=0;
+    for(int i=1;i<=nums[n-1];i++){
+      int lower=lb(nums,i);
+      cnt=n-lower;
       cfwd+=cnt;
       result.add(cfwd%10);
       cfwd/=10;
@@ -20,9 +30,6 @@ public class ManyRepunitSum {
       result.add(cfwd%10);
       cfwd/=10;
     }
-    for(int i=result.size()-1;i>=0;i--){
-      System.out.print(result.get(i)+"");
-    }
+    for(int i=result.size()-1;i>=0;i--) System.out.print(result.get(i));
   }
 }
-
